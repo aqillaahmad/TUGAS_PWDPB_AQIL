@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <style> 
+        body{
+            font-family: Arial, Helvetica, sans-serif
+            padding: 8px;
+            margin: 0px
+        } 
+         h2{
+            color: red;
+         }
+         p.x{color:rgb(0, 0, 255)
+         }
+         p.exx{color: yellow;
+         }
+         p.ex{color: rgb(0, 0,255 );
+        }
+        legend{
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <marquee behavior="alternate" direction="left-right"><h2>Demo membuat Kontrol TEXT</h2></marquee>
+    <form>
+        <fieldset>
+            <p class="ex">Nama:<br /></p>
+    <input type="text" name="tXtNama" size="30" />
+    <br />
+    <p style="color: rgb(0, 0, 0);">password:<br /></p>
+    <input type="text" name="tXtPassword" size="50" />
+    <p style="color: yellow;">Alamat:<br /></p>
+    <input type="text" name="tXtAlamat" size="50" />
+    <br />
+    <p style="color: green;">No. Telepon :<br /></p>
+    <input type="text" name="tXtTelepon" size="20" />
+    <p class="exxxx"> gender ANDA</p>
+    <input type="radio" name="gender" value="male"> LAKI LAKI
+    <input type="radio" name="gender" value="female"> Perempuan
+    <p class="exxxxxx"> Jurusan anda</p>
+    <select>
+        <option value="pplg">PPLG</option>
+        <option value="pemasaran">pemasaran</option>
+        <option value="TKJ">TKJ</option>
+        <option value="AKUTANSI">AKL</option>
+    </select>
+    <p> <input type="submit" value="submit" /></p> <p><input type="reset" value="reset" /></p>
+
+        </fieldset>
+    </form>
+    
+</body>
+</html>
