@@ -1,0 +1,68 @@
+.header{
+    background-color: #000080;
+    height: 50px;
+    width: 100%;
+}
+.judul_header{
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.isi_konten_kiri{
+   
+    width: 70%;
+    height: 550px;
+    float: left;
+}
+.foto{
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin: 40px;
+    border-radius: 100%;
+}
+.isi_konten_kanan{
+    background-color: grey;
+    width: 30%;
+    height: 550px;
+    float: right;
+}
+.footer{
+    background: blue;
+    height: 50px;
+    width: 100%;
+    float: left;
+}
+.nama{
+    margin: 50px;
+    margin-bottom: 0px;
+}
+p{
+    text-align: justify;
+    padding: 10px;
+}
+.foto_kanan{
+    margin-left: 170px;
+    margin-top: 50px;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+}
+.social_media{
+    text-align: center;
+    margin-top: 40px;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
+.footer{
+    background-color: #000080;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    height: 30px;
+    width: 100%;
+    float: left;
+}
