@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Menghitung Luas dan Keliling Persegi Panjang</title>
+<script type="text/javascript">
+     function hitungluaskeliling(){
+     alas=document.getElementById("alas").value;
+     tinggi=document.getElementById("tinggi").value;
+     sisimiring=document.getElementById("sisimiring").value;
+     luas=1/2*alas*tinggi;
+     keliling=alas+(2*sisimiring);
+     document.getElementById("luas").value=luas;
+     document.getElementById("keliling").value=keliling;
+    }
+</script>
+</head>
+<body>
+   <form>
+    <h4>Menghitung Luas dan keliling Persegi Panjang</h4>
+      <table>
+         <tr>
+              <td>alas</td>
+              <td>:</td>
+              <td><input type="text" id="alas" name="alas"></td>
+         </tr>
+         <tr>
+              <td>tinggi</td>
+              <td>:</td>
+              <td><input type="text" id="tinggi" name="tinggi"></td>
+         </tr>
+         <tr>
+              <td>sisimiring</td>
+              <td>:</td>
+              <td><input type="text" id="sisimiring" name="sisimiring"></td>
+         </tr>
+         <tr>
+              <td>Luas</td>
+              <td>:</td>
+              <td><input type="text"  id="luas" name="luas" disabled="true" size="5"></td>
+         </tr>
+          <tr>
+              <td>Keliling</td>
+              <td>:</td>
+              <td><input type="text"  id="keliling" name="keliling" disabled="true" size="5"></td>
+         </tr>
+         <tr>
+              <td></td>
+              <td></td>
+              <td><input type="button" value="hitung luas keliling" onClick="hitungluaskeliling()"></td>
+         </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Menghitung bujur sangkar</title>
+<script type="text/javascript">
+     function hitungluaskeliling(){
+     sisi=document.getElementById("sisi").value;
+     luas=sisi*sisi;
+     keliling=(4*sisi);
+     document.getElementById("luas").value=luas;
+     document.getElementById("keliling").value=keliling;
+    }
+</script>
+</head>
+<body>
+   <form>
+    <h4>Menghitung Luas dan keliling Persegi sisi</h4>
+      <table>
+         <tr>
+              <td>sisi</td>
+              <td>:</td>
+              <td><input type="text" id="sisi" name="sisi"></td>
+         </tr>
+          <tr>
+              <td>Luas</td>
+              <td>:</td>
+              <td><input type="text"  id="luas" name="luas" disabled="true" size="5"></td>
+         </tr>
+          <tr>
+              <td>Keliling</td>
+              <td>:</td>
+              <td><input type="text"  id="keliling" name="keliling" disabled="true" size="5"></td>
+         </tr>
+         <tr>
+              <td></td>
+              <td></td>
+              <td><input type="button" value="hitung luas keliling" onClick="hitungluaskeliling()"></td>
+         </tr>
+        </table>
+    </form>
+</body>
+</html>

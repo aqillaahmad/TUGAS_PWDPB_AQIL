@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>Game Snake Sederhana</title>
+</head>
+<body>
+
+  <canvas id="ruang" width="500" height="500"></canvas>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var ruang = $("#ruang")[0];
+      var ctx = ruang.getContext("2d");
+      var lebar = $("#ruang").width();
+      var tinggi = $("#ruang").height();
+
+      var cw = 20; 
+      var tekan;   
+      var makanan; 
+      var nilai;  
+      var highScore = 0; 
+
+      var array_ular; 
+
+      function init() {
+        tekan = "right";
+        create_snake();
+        create_makanan();
+        nilai = 0; 
+        if (typeof game_loop != "undefined") clearInterval(game_loop);
+        game_loop = setInterval(paint, 100);
+      }
+
+      init();
+
+      function create_snake() {
+        var length = 5;
+        array_ular = [];
+        for (var i = length - 1; i >= 0; i--) {
+          array_ular.push({ x: i, y: 0 });
+        }
+      }
+
+      function create_makanan() {
+        makanan = {
+          x: Math.round(Math.random() * (lebar - cw) / cw),
+          y: Math.round(Math.random() * (tinggi - cw) / cw)
+        };
+      }
+
+      function draw_grid() {
+        ctx.strokeStyle = "#bdc3c7"; 
+        for (var x = 0; x <= lebar; x += cw) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, tinggi);
+          ctx.stroke();
+        }
+        for (var y = 0; y <= tinggi; y += cw) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(lebar, y);
+          ctx.stroke();
+        }
+      }
+
+      function paint() {
+  
+        ctx.fillStyle = "#ecf0f1";
+        ctx.fillRect(0, 0, lebar, tinggi);
+
+        draw_grid();
+
+        var nx = array_ular[0].x;
+        var ny = array_ular[0].y;
+
+        if (tekan == "right") nx++;
+        else if (tekan == "left") nx--;
+        else if (tekan == "up") ny--;
+        else if (tekan == "down") ny++;
+
+        if (nx < 0) nx = (lebar / cw) - 1;
+        else if (nx >= lebar / cw) nx = 0;
+        if (ny < 0) ny = (tinggi / cw) - 1;
+        else if (ny >= tinggi / cw) ny = 0;
+
+        if (cek_tabrakan(nx, ny, array_ular)) {
+          if (nilai > highScore) {
+            highScore = nilai;
+          }
+          init();
+          return;
+        }
+
+        if (nx == makanan.x && ny == makanan.y) {
+          var ekor = { x: nx, y: ny };
+          nilai++;
+          create_makanan();
+        } else {
+          var ekor = array_ular.pop();
+          ekor.x = nx;
+          ekor.y = ny;
+        }
+        array_ular.unshift(ekor);
+
+        for (var i = 0; i < array_ular.length; i++) {
+          var c = array_ular[i];
+          paint_cell(c.x, c.y, "#27ae60");
+        }
+
+        paint_cell(makanan.x, makanan.y, "#e74c3c");
+
+        ctx.fillStyle = "#2c3e50";
+        ctx.font = "14px Arial";
+        ctx.fillText("Score: " + nilai, 5, tinggi - 20);
+        ctx.fillText("High Score: " + highScore, 5, tinggi - 5);
+      }
+      function paint_cell(x, y, color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(x * cw, y * cw, cw, cw);
+        ctx.strokeStyle = "#ecf0f1";
+        ctx.strokeRect(x * cw, y * cw, cw, cw);
+      }
+      function cek_tabrakan(x, y, array) {
+        for (var i = 0; i < array.length; i++) {
+          if (array[i].x == x && array[i].y == y) return true;
+        }
+        return false;
+      }
+      $(document).keydown(function(e) {
+        var key = e.which;
+        if (key == "37" && tekan != "right") tekan = "left";
+        else if (key == "38" && tekan != "down") tekan = "up";
+        else if (key == "39" && tekan != "left") tekan = "right";
+        else if (key == "40" && tekan != "up") tekan = "down";
+      });
+    });
+  </script>
+</body>
+</html>
